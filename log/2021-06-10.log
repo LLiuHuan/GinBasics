@@ -1,0 +1,6 @@
+[FAIR-MAN-SERVER]2021/06/10 - 10:49:11.870	[34minfo[0m	use middleware logger
+[FAIR-MAN-SERVER]2021/06/10 - 10:49:11.881	[34minfo[0m	use middleware cors
+[FAIR-MAN-SERVER]2021/06/10 - 10:49:11.882	[34minfo[0m	register swagger handler
+[FAIR-MAN-SERVER]2021/06/10 - 10:49:11.892	[34minfo[0m	服务启动成功，监听端口为：  	{"address": ":8888"}
+[FAIR-MAN-SERVER]2021/06/10 - 10:49:37.083	[34minfo[0m	Shutdown Server ...
+[FAIR-MAN-SERVER]2021/06/10 - 10:49:37.090	[34minfo[0m	Server exiting
