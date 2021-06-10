@@ -1,9 +1,9 @@
 package initialize
 
 import (
-	"fairman-server/global"
-	"fairman-server/middlewares"
-	"fairman-server/router"
+	"gin-basics/global"
+	"gin-basics/middlewares"
+	"gin-basics/router"
 	"github.com/gin-gonic/gin"
 	"net/http"
 
@@ -19,14 +19,14 @@ func Routers(mode string) *gin.Engine {
 	var r = gin.Default()
 	//r.Use(GinLogger(), GinRecovery(true))
 	// Router.Use(middleware.LoadTls()  // https
-	global.FMS_LOG.Info("use middleware logger")
+	global.GB_LOG.Info("use middleware logger")
 	// 跨域
 	r.Use(middlewares.Cors())
 
-	global.FMS_LOG.Info("use middleware cors")
+	global.GB_LOG.Info("use middleware cors")
 	// swagger 文档
 	r.GET("/swagger/*any", gs.WrapHandler(swaggerFiles.Handler))
-	global.FMS_LOG.Info("register swagger handler")
+	global.GB_LOG.Info("register swagger handler")
 
 	PublicGroup := r.Group("/v1")
 	{

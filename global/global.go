@@ -1,7 +1,7 @@
 package global
 
 import (
-	"fairman-server/config"
+	"gin-basics/config"
 	"github.com/docker/docker/client"
 	ut "github.com/go-playground/universal-translator"
 	"github.com/spf13/viper"
@@ -9,9 +9,9 @@ import (
 )
 
 var (
-	FMS_VP     *viper.Viper
-	FMS_CONFIG  config.Server
-	FMS_LOG    *zap.Logger
-	FMS_TRANS  ut.Translator
-	FMS_CIL    *client.Client
+	GB_VP     *viper.Viper
+	GB_CONFIG config.Server
+	GB_LOG    *zap.Logger
+	GB_TRANS  ut.Translator
+	GB_CIL    *client.Client
 )

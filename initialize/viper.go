@@ -1,10 +1,10 @@
 package initialize
 
 import (
-	"fairman-server/global"
-	"fairman-server/utils"
 	"flag"
 	"fmt"
+	"gin-basics/global"
+	"gin-basics/utils"
 	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
 	"os"
@@ -42,11 +42,11 @@ func Viper(path ...string) *viper.Viper {
 
 	v.OnConfigChange(func(e fsnotify.Event) {
 		fmt.Println("配置文件已修改: ", e.Name)
-		if err := v.Unmarshal(&global.FMS_CONFIG); err != nil {
+		if err := v.Unmarshal(&global.GB_CONFIG); err != nil {
 			fmt.Println(err)
 		}
 	})
-	if err := v.Unmarshal(&global.FMS_CONFIG); err != nil {
+	if err := v.Unmarshal(&global.GB_CONFIG); err != nil {
 		fmt.Println(err)
 	}
 	//global.GEA_CONFIG.AutoCode.Root, _ = filepath.Abs("..")

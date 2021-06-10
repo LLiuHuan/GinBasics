@@ -1,4 +1,4 @@
-module fairman-server
+module gin-basics
 
 go 1.16
 

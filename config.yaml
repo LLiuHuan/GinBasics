@@ -1,11 +1,11 @@
 system:
-  name: "FairManServer"
+  name: "GinBasics"
   port: 8888
   version: "v0.0.1"
 zap:
   level: info
   format: console
-  prefix: '[FAIR-MAN-SERVER]'
+  prefix: '[GIN-BASICS]'
   directory: log
   link-name: latest_log
   showLine: true

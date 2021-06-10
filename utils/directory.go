@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"fairman-server/global"
+	"gin-basics/global"
 	"go.uber.org/zap"
 	"os"
 )
@@ -36,10 +36,10 @@ func CreateDir(dirs ...string) (err error) {
 			return err
 		}
 		if !exist {
-			global.FMS_LOG.Debug("create directory" + v)
+			global.GB_LOG.Debug("create directory" + v)
 			err = os.MkdirAll(v, os.ModePerm)
 			if err != nil {
-				global.FMS_LOG.Error("create directory"+v, zap.Any(" error:", err))
+				global.GB_LOG.Error("create directory"+v, zap.Any(" error:", err))
 			}
 		}
 	}

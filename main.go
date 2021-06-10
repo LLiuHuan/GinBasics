@@ -1,13 +1,13 @@
 package main
 
 import (
-	"fairman-server/global"
-	"fairman-server/initialize"
+	"gin-basics/global"
+	"gin-basics/initialize"
 )
 
 func init() {
-	global.FMS_VP = initialize.Viper()
-	global.FMS_LOG = initialize.Zap()
+	global.GB_VP = initialize.Viper()
+	global.GB_LOG = initialize.Zap()
 }
 
 func main() {

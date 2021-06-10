@@ -1,8 +1,8 @@
 package initialize
 
 import (
-	"fairman-server/global"
 	"fmt"
+	"gin-basics/global"
 	"github.com/gin-gonic/gin/binding"
 	"github.com/go-playground/locales/en"
 	"github.com/go-playground/locales/zh"
@@ -41,7 +41,7 @@ func InitTrans(locale string) (err error) {
 		// locale 通常取决于 http 请求头的 'Accept-Language'
 		var ok bool
 		// 也可以使用 uni.FindTranslator(...) 传入多个locale进行查找
-		global.FMS_TRANS, ok = uni.GetTranslator(locale)
+		global.GB_TRANS, ok = uni.GetTranslator(locale)
 		if !ok {
 			return fmt.Errorf("uni.GetTranslator(%s) failed", locale)
 		}
@@ -49,11 +49,11 @@ func InitTrans(locale string) (err error) {
 		// 注册翻译器
 		switch locale {
 		case "en":
-			err = enTranslations.RegisterDefaultTranslations(v, global.FMS_TRANS)
+			err = enTranslations.RegisterDefaultTranslations(v, global.GB_TRANS)
 		case "zh":
-			err = zhTranslations.RegisterDefaultTranslations(v, global.FMS_TRANS)
+			err = zhTranslations.RegisterDefaultTranslations(v, global.GB_TRANS)
 		default:
-			err = enTranslations.RegisterDefaultTranslations(v, global.FMS_TRANS)
+			err = enTranslations.RegisterDefaultTranslations(v, global.GB_TRANS)
 		}
 		return
 	}

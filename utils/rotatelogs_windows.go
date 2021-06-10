@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"fairman-server/global"
+	"gin-basics/global"
 	zaprotatelogs "github.com/lestrrat-go/file-rotatelogs"
 	"go.uber.org/zap/zapcore"
 	"os"
@@ -16,11 +16,11 @@ import (
 
 func GetWriteSyncer() (zapcore.WriteSyncer, error) {
 	fileWriter, err := zaprotatelogs.New(
-		path.Join(global.FMS_CONFIG.Zap.Directory, "%Y-%m-%d.log"), // 创建路径
+		path.Join(global.GB_CONFIG.Zap.Directory, "%Y-%m-%d.log"), // 创建路径
 		zaprotatelogs.WithMaxAge(7*24*time.Hour),                  // 清除日志的最长时间
 		zaprotatelogs.WithRotationTime(24*time.Hour),              // 切割日志的间隔，一天一个
 	)
-	if global.FMS_CONFIG.Zap.LogInConsole { // 同步在命令窗也显示
+	if global.GB_CONFIG.Zap.LogInConsole { // 同步在命令窗也显示
 		return zapcore.NewMultiWriteSyncer(zapcore.AddSync(os.Stdout), zapcore.AddSync(fileWriter)), err
 	}
 	return zapcore.AddSync(fileWriter), err

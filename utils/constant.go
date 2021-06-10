@@ -1,6 +1,6 @@
 package utils
 
 const (
-	ConfigEnv  = "FMS_CONFIG"
+	ConfigEnv  = "GB_CONFIG"
 	ConfigFile = "config.yaml"
 )

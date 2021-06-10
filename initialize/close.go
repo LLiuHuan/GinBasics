@@ -2,8 +2,8 @@ package initialize
 
 import (
 	"context"
-	"fairman-server/global"
 	"fmt"
+	"gin-basics/global"
 	"go.uber.org/zap"
 	"net/http"
 	"os"
@@ -18,7 +18,7 @@ func Close(s *http.Server) {
 	go func() {
 		// 开启一个goroutine启动服务
 		if err := s.ListenAndServe(); err != nil && err != http.ErrServerClosed {
-			global.FMS_LOG.Fatal("listen", zap.Error(err))
+			global.GB_LOG.Fatal("listen", zap.Error(err))
 			fmt.Println("listen: ", "关机")
 		}
 	}()
@@ -31,14 +31,14 @@ func Close(s *http.Server) {
 	// signal.Notify把收到的 syscall.SIGINT或syscall.SIGTERM 信号转发给quit
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM) // 此处不会阻塞
 	<-quit                                               // 阻塞在此，当接收到上述两种信号时才会往下执行
-	global.FMS_LOG.Info("Shutdown Server ...")
+	global.GB_LOG.Info("Shutdown Server ...")
 	// 创建一个5秒超时的context
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 	// 5秒内优雅关闭服务（将未处理完的请求处理完再关闭服务），超过5秒就超时退出
 	if err := s.Shutdown(ctx); err != nil {
-		global.FMS_LOG.Fatal("Server Shutdown: ", zap.Error(err))
+		global.GB_LOG.Fatal("Server Shutdown: ", zap.Error(err))
 	}
 
-	global.FMS_LOG.Info("Server exiting")
+	global.GB_LOG.Info("Server exiting")
 }

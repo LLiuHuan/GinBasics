@@ -1,7 +1,7 @@
 package initialize
 
 import (
-	"fairman-server/global"
+	"gin-basics/global"
 	"github.com/docker/docker/client"
 	"os"
 	"runtime"
@@ -15,14 +15,14 @@ func InitContent(t string) {
 			url = "npipe:////./pipe/docker_engine"
 		}
 
-		global.FMS_CIL, err = client.NewClientWithOpts(
+		global.GB_CIL, err = client.NewClientWithOpts(
 			client.FromEnv,
 			client.WithAPIVersionNegotiation(),
 			client.WithHost(url),
 		)
 
 		if err != nil {
-			global.FMS_LOG.Error(err.Error())
+			global.GB_LOG.Error(err.Error())
 			os.Exit(-1)
 		}
 	} else {
@@ -31,14 +31,14 @@ func InitContent(t string) {
 			url = "npipe:////./pipe/docker_engine"
 		}
 
-		global.FMS_CIL, err = client.NewClientWithOpts(
+		global.GB_CIL, err = client.NewClientWithOpts(
 			client.FromEnv,
 			client.WithAPIVersionNegotiation(),
 			client.WithHost(url),
 		)
 
 		if err != nil {
-			global.FMS_LOG.Error(err.Error())
+			global.GB_LOG.Error(err.Error())
 			os.Exit(-1)
 		}
 	}
